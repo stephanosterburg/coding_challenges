@@ -34,16 +34,7 @@ import os
 # NO
 # YES
 #
-def isBalanced(string):
-    # brackets = {'{': '}', '[': ']', '(': ')'}
-    #
-    # if len(string) % 2 == 0:
-    #     firstpart, secondpart = string[:len(string) // 2], string[len(string) // 2:][::-1]
-    #     for i in range(len(s) // 2):
-    #         if firstpart[i] not in brackets.keys() or brackets[firstpart[i]] != secondpart[i]:
-    #             return 'NO'
-    #
-    #     return 'YES'
+def is_balanced(string):
     brackets = []
     valid = True
 
@@ -82,4 +73,4 @@ if __name__ == '__main__':
     t = list(map(int, filename.readline().split()))[0]
     for t_itr in range(t):
         s = filename.readline().split()[0]
-        print(isBalanced(s))
+        print(is_balanced(s))
