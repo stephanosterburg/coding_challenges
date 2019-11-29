@@ -35,15 +35,41 @@ import os
 # YES
 #
 def isBalanced(string):
-    brackets = {'{': '}', '[': ']', '(': ')'}
+    # brackets = {'{': '}', '[': ']', '(': ')'}
+    #
+    # if len(string) % 2 == 0:
+    #     firstpart, secondpart = string[:len(string) // 2], string[len(string) // 2:][::-1]
+    #     for i in range(len(s) // 2):
+    #         if firstpart[i] not in brackets.keys() or brackets[firstpart[i]] != secondpart[i]:
+    #             return 'NO'
+    #
+    #     return 'YES'
+    brackets = []
+    valid = True
 
-    if len(string) % 2 == 0:
-        firstpart, secondpart = string[:len(string) // 2], string[len(string) // 2:][::-1]
-        for i in range(len(s) // 2):
-            if firstpart[i] not in brackets.keys() or brackets[firstpart[i]] != secondpart[i]:
-                return 'NO'
+    for char in string:
+        if char == ')':
+            if not brackets or brackets[-1] != '(':
+                valid = False
+                break
+            else:
+                brackets.pop()
+        elif char == ']':
+            if not brackets or brackets[-1] != '[':
+                valid = False
+                break
+            else:
+                brackets.pop()
+        elif char == '}':
+            if not brackets or brackets[-1] != '{':
+                valid = False
+                break
+            else:
+                brackets.pop()
+        else:
+            brackets += [char]
 
-        return 'YES'
+    return "YES" if (valid and not brackets) else "NO"
 
 
 if __name__ == '__main__':
@@ -51,7 +77,7 @@ if __name__ == '__main__':
     # input18 -> YES NO YES
     # input19 -> YES NO
     # input20 -> YES NO YES
-    filename = open(pwd + "/balanced-brackets-testcases/input/input20.txt", 'r')
+    filename = open(pwd + "/balanced-brackets-testcases/input/input18.txt", 'r')
 
     t = list(map(int, filename.readline().split()))[0]
     for t_itr in range(t):
