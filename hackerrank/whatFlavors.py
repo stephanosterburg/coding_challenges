@@ -20,7 +20,7 @@ import os
 # Print two space-separated integers denoting the respective indices for the two
 # distinct flavors they choose to purchase in ascending order.
 #
-def whatFlavors(cost, money):
+def whatFlavors(cost: list, money: int):
     cost_dict = {}
     for k, v in enumerate(cost):
         if money - v in cost_dict:
