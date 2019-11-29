@@ -60,7 +60,7 @@ def is_balanced(string):
         else:
             brackets += [char]
 
-    return "YES" if (valid and not brackets) else "NO"
+    return "YES" if valid and not brackets else "NO"
 
 
 if __name__ == '__main__':
